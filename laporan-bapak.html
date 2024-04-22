@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function createLaporanBapak() {
+            const input = document.getElementById('laporan').value
+
+            const gakkumInfo = input.match(/GIAT GAKKUM :[\s\S]+?Lainnya\s*:\s*\d+\s*kali/g)[0];
+            const turjawaliInfo = input.match(/GIAT TURJAWALI:[\s\S]+?Patroli\s*:\s*\d+\s*kali/g)[0];
+            const weekday = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+
+            const date = new Date()
+            const day = weekday[date.getDay()];
+
+
+            const text = `Kepada : Yth ,
+1. KAKORLANTAS POLRI
+2. KAPOLDA DIY
+
+Dari        :
+DIRLANTAS POLDA DIY
+
+Perihal   : Laporan Situasi Kamseltibcarlantas Subditgakkum dan Jajaran Ditlantas Polda DIY
+
+Dilaporkan JENDERAL, Situasi Kamseltibcarlantas pada hari ${day} tanggal ${date.getDate()} April 2024 sbb :
+
+1. ${gakkumInfo}
+
+2. ${turjawaliInfo}
+
+Terlampir Data jumlah Kejadian dan data Korban kecelakaan.
+
+Demikian JENDERAL yang dapat kami laporkan.
+
+Tembusan:
+1. DIRGAKKUM KORLANTAS POLRI`
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+    </script>
+</head>
+<body>
+    <textarea name="laporan" id="laporan" cols="30" rows="10"></textarea>
+    <button onclick="createLaporanBapak()">Create</button>
+</body>
+</html>
