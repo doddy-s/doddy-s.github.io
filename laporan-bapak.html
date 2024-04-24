@@ -6,7 +6,8 @@
     <title>Document</title>
     <script>
         function createLaporanBapak() {
-            const input = document.getElementById('laporan').value
+            let input = document.getElementById('laporan').value
+            input = input.replace(/\*/g, '');
 
             const gakkumInfo = input.match(/GIAT GAKKUM :[\s\S]+?Lainnya\s*:\s*\d+\s*kali/g)[0];
             const turjawaliInfo = input.match(/GIAT TURJAWALI:[\s\S]+?Patroli\s*:\s*\d+\s*kali/g)[0];
