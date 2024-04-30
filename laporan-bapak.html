@@ -7,14 +7,36 @@
     <script>
         function createLaporanBapak() {
             let input = document.getElementById('laporan').value
-            input = input.replace(/\*/g, '');
+            input = input.replace(/\*/g, '')
 
-            const gakkumInfo = input.match(/GIAT GAKKUM :[\s\S]+?Lainnya\s*:\s*\d+\s*kali/g)[0];
-            const turjawaliInfo = input.match(/GIAT TURJAWALI:[\s\S]+?Patroli\s*:\s*\d+\s*kali/g)[0];
-            const weekday = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+            let gakkumInfo
+            let turjawaliInfo
+            
+            try {
+                gakkumInfo = input.match(/GIAT GAK[\s\S]+?Lainnya\s*:\s*\d+\s*kali/g)[0]
+            } catch (error) {
+                alert(error)
+            }
+            
+            try {
+                turjawaliInfo = input.match(/GIAT TUR[\s\S]+?Patroli\s*:\s*\d+\s*kali/g)[0]
+            } catch (error) {
+                alert(error)
+            }
 
-            const date = new Date()
-            const day = weekday[date.getDay()];
+            const weekday = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"]
+            const months = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ]
+
+            const currentDate = new Date()
+            const day = weekday[currentDate.getDay()]
+            const date = currentDate.getDate()
+            const month = months[currentDate.getMonth()]
+            const year = currentDate.getFullYear()
+
+            console.log(day, date, month, year)
 
 
             const text = `Kepada : Yth ,
@@ -26,7 +48,7 @@ DIRLANTAS POLDA DIY
 
 Perihal   : Laporan Situasi Kamseltibcarlantas Subditgakkum dan Jajaran Ditlantas Polda DIY
 
-Dilaporkan JENDERAL, Situasi Kamseltibcarlantas pada hari ${day} tanggal ${date.getDate()} April 2024 sbb :
+Dilaporkan JENDERAL, Situasi Kamseltibcarlantas pada hari ${day} tanggal ${date} ${month} ${year} sbb :
 
 1. ${gakkumInfo}
 
@@ -38,12 +60,13 @@ Demikian JENDERAL yang dapat kami laporkan.
 
 Tembusan:
 1. DIRGAKKUM KORLANTAS POLRI`
-            var dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
+
+            var dummy = document.createElement("textarea")
+            document.body.appendChild(dummy)
+            dummy.value = text
+            dummy.select()
+            document.execCommand("copy")
+            document.body.removeChild(dummy)
         }
     </script>
 </head>
