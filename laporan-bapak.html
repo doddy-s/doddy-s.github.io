@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laporan Bapak</title>
     <script>
         function createLaporanBapak() {
             let input = document.getElementById('laporan').value
@@ -69,9 +69,27 @@ Tembusan:
             document.body.removeChild(dummy)
         }
     </script>
+    <style>
+        .w-full {
+            width: 100%;
+        }
+
+        .w-99 {
+            width: 99%;
+        }
+
+        .h-12 {
+            height: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <textarea name="laporan" id="laporan" cols="30" rows="10"></textarea>
-    <button onclick="createLaporanBapak()">Create</button>
+    <textarea name="laporan" id="laporan" rows="30" 
+    placeholder=
+"=> Copy laporan di sini
+=> Click 'Create' untuk membuat laporan"
+    class="w-99"></textarea>
+    <br>
+    <button class="w-full h-12" onclick="createLaporanBapak()">Create</button>
 </body>
 </html>
