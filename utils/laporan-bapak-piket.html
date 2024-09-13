@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Bapak</title>
+    <script src="./laporan-bapak-piket.js"></script>
+    <style>
+        .w-full {
+            width: 100%;
+        }
+
+        .w-99 {
+            width: 99%;
+        }
+
+        .h-12 {
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="sleman" id="sleman" rows="10" 
+    placeholder=
+"=> Sleman"
+    class="w-99"></textarea>
+    <br>
+    <textarea name="polresta" id="polresta" rows="10" 
+    placeholder=
+"=> Polresta"
+    class="w-99"></textarea>
+    <br>
+    <textarea name="bantul" id="bantul" rows="10" 
+    placeholder=
+"=> Bantul"
+    class="w-99"></textarea>
+    <br>
+    <textarea name="kulonprogo" id="kulonprogo" rows="10" 
+    placeholder=
+"=> Kulonprogo"
+    class="w-99"></textarea>
+    <br>
+    <textarea name="gunungkidul" id="gunungkidul" rows="10" 
+    placeholder=
+"=> Gunungkidul"
+    class="w-99"></textarea>
+    <textarea name="tambahan" id="tambahan" rows="10" 
+    placeholder=
+"=> Tambahan"
+    class="w-99"></textarea>
+    <br>
+    <button class="w-full h-12" onclick="createFromTemplate()">Create</button>
+    <input type="checkbox" name="kurun" id="kurun">
+    <label>12jam</label>
+</body>
+</html>
